@@ -1,5 +1,4 @@
-#include "mpc.h"
-#include "repl.h"
+#include "lispy.h"
 
 int main(int argc, char** argv) {
   return repl(argc, argv);

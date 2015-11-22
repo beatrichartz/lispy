@@ -1,15 +1,16 @@
-#define KNRM  "\x1B[0m"
+#ifndef LISPY_TEST_RUNNER
+#define LISPY_TEST_RUNNER
+
 #define KRED  "\x1B[31m"
 #define KGRN  "\x1B[32m"
-#define KYEL  "\x1B[33m"
-#define KBLU  "\x1B[34m"
-#define KMAG  "\x1B[35m"
 #define KCYN  "\x1B[36m"
-#define KWHT  "\x1B[37m"
 #define RESET "\033[0m"
 
+#include <stdio.h>
+#include "lispy.h"
+
 #define PRINT_RUN_START()                                              \
-  printf("\n%s*** RUNNING TESTS ***%s\n\n", KYEL, RESET);
+  printf("\n%s*** RUNNING TESTS ***%s\n\n", KCYN, RESET);
 
 #define PRINT_RUN_RESULT() do {                                        \
   char* color = (tests_failed == 0) ? KGRN : KRED;                     \
@@ -44,3 +45,5 @@
 extern int tests_run;
 extern int tests_passed;
 extern int tests_failed;
+
+#endif

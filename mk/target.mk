@@ -1,7 +1,7 @@
 SRC_DIR = src
 OBJ_DIR = obj
 BIN_DIR = bin
-SOURCES = $(wildcard $(SRC_DIR)/*.c)
+SOURCES = $(wildcard $(SRC_DIR)/*.c) $(wildcard $(SRC_DIR)/*/*.c)
 OBJECTS = $(SOURCES:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 TARGET = lispy

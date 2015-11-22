@@ -1,6 +1,4 @@
-#include <stdio.h>
 #include "runner.h"
-#include "lang.h"
 
 static int test_any() {
   test_assert(1 == 1);
