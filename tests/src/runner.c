@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "runner.h"
+#include "lang.h"
 
 static int test_any() {
   test_assert(1 == 1);
@@ -11,18 +12,20 @@ static int test_some() {
   return 0;
 }
 
-int all_tests() {
+
+int run_all_tests() {
   run_test(test_any);
   run_test(test_some);
   return 0;
 }
 
 int tests_run = 0;
+int tests_passed = 0;
+int tests_failed = 0;
 int main(int arc, char** argv) {
-  int result = all_tests();
-  if (result == 0) {
-    printf("PASSED\n");
-  }
+  PRINT_RUN_START();
+  run_all_tests();
+  PRINT_RUN_RESULT();
 
-  printf("Tests run: %d\n", tests_run);
+  return tests_failed == 0;
 }
