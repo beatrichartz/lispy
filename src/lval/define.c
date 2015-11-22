@@ -39,7 +39,12 @@ lval* lval_err(char* m) {
   return v;
 }
 
+void free_cell(lval** cell, int count);
 void lval_del(lval* v) {
+  if (v == NULL) {
+    return;
+  }
+
   switch(v->type) {
     case LVAL_LONG:
       break;
@@ -52,13 +57,23 @@ void lval_del(lval* v) {
       free(v->sym);
       break;
     case LVAL_SEXPR:
-      for (int i = 0; i < v->count; i++) {
-        lval_del(v->cell[i]);
-      }
-      free(v->cell);
+      free_cell(v->cell, v->count);
       break;
   }
 
   free(v);
+  v = NULL;
+}
+
+void free_cell(lval** cell, int count) {
+  if (cell == NULL) {
+    return;
+  }
+  for (int i = 0; i < count; i++) {
+    lval_del(cell[i]);
+  }
+
+  free(cell);
+  cell = NULL;
 }
 

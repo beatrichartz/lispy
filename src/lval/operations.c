@@ -14,8 +14,12 @@ lval* lval_pop(lval* v, int i) {
   memmove(&v->cell[i], &v->cell[i+1], sizeof(lval*) * v->count - i - 1);
 
   v->count--;
-
-  v->cell = realloc(v->cell, sizeof(lval*) * v->count);
+  if (v->count == 0) {
+    free(v->cell);
+    v->cell = NULL;
+  } else {
+    v->cell = realloc(v->cell, sizeof(lval*) * v->count);
+  }
 
   return x;
 }

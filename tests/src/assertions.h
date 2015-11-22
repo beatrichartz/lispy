@@ -2,24 +2,27 @@
 #define LISPY_TEST_ASSERTIONS
 
 #include <stdio.h>
+#include <strings.h>
 #include "colors.h"
 
-#define PASS() do {                                                    \
-  printf("%sPASSED: %s()%s\n", KGRN, __func__, RESET);                 \
+#define PASS_ASSERTION(assertion) do {                                 \
+  printf("%s%s:\t%s%s\n",                                                  \
+         KGRN, __func__, assertion, RESET);                                      \
 } while(0)
 
-#define FAIL() do {                                                    \
-  printf("%sFAILED: %s()%s\n", KRED, __func__, RESET);                 \
+#define FAIL_ASSERTION(assertion) do {                                 \
+  printf("%s%s:\t%s%s\n",                                                \
+         KRED, __func__, assertion, RESET);                                      \
 } while(0)
 
-#define test_assert(test) do {                                         \
-  if (test) {                                                          \
-    PASS();                                                            \
+#define test_assert(assertion) do {                                    \
+  if (assertion) {                                                     \
+    PASS_ASSERTION("" #assertion "\tpassed");                          \
   } else {                                                             \
-    FAIL();                                                            \
+    FAIL_ASSERTION("" #assertion "\tfailed");                          \
+    return assertion;                                                  \
   }                                                                    \
                                                                        \
-  return test;                                                         \
 } while(0)
 
 #endif

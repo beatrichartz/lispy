@@ -7,12 +7,22 @@
 #include "lispy.h"
 
 #define PRINT_RUN_START()                                              \
-  printf("\n%s*** RUNNING TESTS ***%s\n\n", KCYN, RESET);
+  printf("\n%s*********** RUNNING TESTS ************%s\n\n", KCYN, RESET);
 
 #define PRINT_RUN_RESULT() do {                                        \
   char* color = (tests_failed == 0) ? KGRN : KRED;                     \
-  char* message = "\n%s*** %d TEST RUN, %d PASSED, %d FAILED ***%s\n"; \
+  char* message = "%s*** %d TEST RUN, %d PASSED, %d FAILED ***%s\n"; \
   printf(message, color, tests_run, tests_passed, tests_failed, RESET);\
+} while(0)
+
+#define PASS(test) do {                                                \
+  tests_passed++;                                                      \
+  printf("\n");                                                        \
+} while(0)
+
+#define FAIL(test) do {                                                \
+  tests_failed++;                                                      \
+  printf("\n");                                                        \
 } while(0)
 
 #define run_test(test) do {                                            \
@@ -20,9 +30,9 @@
   tests_run++;                                                         \
                                                                        \
   if (r) {                                                             \
-    tests_passed++;                                                    \
+    PASS(test);                                                        \
   } else {                                                             \
-    tests_failed++;                                                    \
+    FAIL(test);                                                        \
   }                                                                    \
 } while(0)
 
