@@ -1,0 +1,6 @@
+*.dSYM
+*.o
+bin/*
+obj/*
+tests/bin/*
+tests/obj/*
