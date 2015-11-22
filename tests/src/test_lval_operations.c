@@ -25,6 +25,7 @@ int test_lval_pop() {
   test_assert(a->cell == NULL);
 
   lval_del(a);
+  lval_del(b);
 
   return 1;
 }
@@ -38,6 +39,8 @@ int test_lval_take() {
 
   test_assert(a->count == 0);
   test_assert(a->cell == NULL);
+
+  lval_del(b);
 
   return 1;
 }

@@ -31,6 +31,5 @@ lval* lval_double(double num);
 lval* lval_sym(char* s);
 lval* lval_sexpr(void);
 lval* lval_err(char* m);
-void lval_del(lval* v);
 
 #endif
