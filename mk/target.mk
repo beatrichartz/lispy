@@ -8,7 +8,7 @@ TARGET = lispy
 
 $(TARGET): $(BIN_DIR)/$(TARGET)
 
-$(BIN_DIR)/$(TARGET): $(OBJECTS) $(LIB_OBJECTS)
+$(BIN_DIR)/$(TARGET): $(LIB_OBJECTS) $(OBJECTS) 
 	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 
 $(OBJECTS): $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
