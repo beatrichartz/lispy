@@ -1,4 +1,4 @@
-#include "test_lval_operations.h"
+#include "test_operations.h"
 
 int test_lval_add() {
   lval* a = lval_sexpr();

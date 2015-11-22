@@ -1,5 +1,5 @@
 #include "runner.h"
-#include "test_lval_operations.h"
+#include "test_lval.h"
 
 int tests_run = 0;
 int tests_passed = 0;

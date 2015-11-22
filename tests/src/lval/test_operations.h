@@ -1,5 +1,5 @@
-#ifndef LISPY_TEST_LVAL
-#define LISPY_TEST_LVAL
+#ifndef LISPY_TEST_LVAL_OPERATIONS
+#define LISPY_TEST_LVAL_OPERATIONS
 
 #include "lispy.h"
 #include "assertions.h"
