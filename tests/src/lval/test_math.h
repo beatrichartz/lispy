@@ -3,6 +3,7 @@
 
 #include <stdarg.h>
 #include "lispy.h"
+#include "support.h"
 #include "assertions.h"
 
 int test_lval_double_addition();

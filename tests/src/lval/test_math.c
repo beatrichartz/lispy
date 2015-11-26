@@ -1,21 +1,5 @@
 #include "test_math.h"
 
-lval* sexpr_double_mock(int count,...) {
-  lval* e = lval_sexpr();
-
-  va_list arguments;
-  va_start(arguments, count);
-
-  for (int i = 0; i < count; i++) {
-    lval* x = lval_double(va_arg(arguments, double));
-    lval_add(e, x);
-  }
-
-  va_end(arguments);
-
-  return e;
-}
-
 int test_lval_double_addition() {
   lval* e = sexpr_double_mock(2, 3.0, 3.0);
   lval* result = builtin_op(e, "+");
@@ -148,22 +132,6 @@ int test_lval_unsupported_double_unary() {
   return 1;
 }
 
-
-lval* sexpr_long_mock(int count,...) {
-  lval* e = lval_sexpr();
-
-  va_list arguments;
-  va_start(arguments, count);
-
-  for (int i = 0; i < count; i++) {
-    lval* x = lval_long(va_arg(arguments, long));
-    lval_add(e, x);
-  }
-
-  va_end(arguments);
-
-  return e;
-}
 
 int test_lval_long_addition() {
   lval* e = sexpr_long_mock(2, 3, 3);
