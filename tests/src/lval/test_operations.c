@@ -19,7 +19,7 @@ int test_lval_pop() {
   lval* b = lval_sexpr();
 
   lval_add(a, b);
-  lval_pop(a, 1);
+  lval_pop(a, 0);
 
   test_assert(a->count == 0);
   test_assert(a->cell == NULL);
@@ -35,7 +35,7 @@ int test_lval_take() {
   lval* b = lval_sexpr();
 
   lval_add(a, b);
-  lval_take(a, 1);
+  lval_take(a, 0);
 
   test_assert(a->count == 0);
   test_assert(a->cell == NULL);
