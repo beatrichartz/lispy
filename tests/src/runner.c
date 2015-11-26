@@ -55,6 +55,11 @@ int run_all_tests() {
   run_test(test_lval_unsupported_long);
   run_test(test_lval_unsupported_long_unary);
 
+
+  run_test(test_lval_print_sexpr);
+  run_test(test_lval_print_double);
+  run_test(test_lval_print_long);
+
   return 0;
 }
 

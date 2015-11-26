@@ -5,5 +5,6 @@
 #include "lval/test_define.h"
 #include "lval/test_eval.h"
 #include "lval/test_math.h"
+#include "lval/test_print.h"
 
 #endif

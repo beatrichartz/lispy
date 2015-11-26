@@ -3,4 +3,5 @@
 bin/*
 obj/*.o
 tests/bin/*
+tests/tmp/*
 tests/obj/*.o
