@@ -36,6 +36,8 @@ int run_all_tests() {
   run_test(test_lval_double_min);
 
   run_test(test_lval_double_unary_minus);
+  run_test(test_lval_unsupported_double);
+  run_test(test_lval_unsupported_double_unary);
 
 
   run_test(test_lval_long_addition);
@@ -50,6 +52,8 @@ int run_all_tests() {
   run_test(test_lval_long_min);
 
   run_test(test_lval_long_unary_minus);
+  run_test(test_lval_unsupported_long);
+  run_test(test_lval_unsupported_long_unary);
 
   return 0;
 }

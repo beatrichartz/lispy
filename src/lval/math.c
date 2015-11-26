@@ -28,7 +28,7 @@ lval* builtin_op_long(lval* x, char* op, lval* y) {
   if (is_min && x->data.l > y->data.l) { x->data.l = y->data.l; return x; }
   else if (is_min) { return x; }
 
-  return lval_err("bad operation");
+  return lval_err("Unknown operation");
 }
 
 lval* builtin_op_double(lval* x, char* op, lval* y) {
@@ -59,7 +59,7 @@ lval* builtin_op_double(lval* x, char* op, lval* y) {
   if (is_min && x->data.d > y->data.d) { x->data.d = y->data.d; return x; }
   else if (is_min) { return x; }
 
-  return lval_err("bad operation");
+  return lval_err("Unknown operation");
 }
 
 
@@ -91,6 +91,8 @@ lval* builtin_op(lval* a, char* op) {
         lval_del(x); lval_del(a);
         return lval_err("Can not apply unary operation to non-number");
     }
+  } else if (!is_unary_minus && a->count == 0) {
+    return lval_err("Unknown unary operation");
   }
 
   while (a->count > 0) {

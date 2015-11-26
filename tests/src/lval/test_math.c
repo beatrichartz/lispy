@@ -128,6 +128,26 @@ int test_lval_double_unary_minus() {
   return 1;
 }
 
+int test_lval_unsupported_double() {
+  lval* e = sexpr_double_mock(2, 4.0, 0.0);
+  lval* result = builtin_op(e, "&");
+  test_assert(result->type == LVAL_ERR);
+  test_assert(strcmp(result->err, "Unknown operation") == 0);
+
+  lval_del(result);
+  return 1;
+}
+
+int test_lval_unsupported_double_unary() {
+  lval* e = sexpr_double_mock(1, 4.0);
+  lval* result = builtin_op(e, "&");
+  test_assert(result->type == LVAL_ERR);
+  test_assert(strcmp(result->err, "Unknown unary operation") == 0);
+
+  lval_del(result);
+  return 1;
+}
+
 
 lval* sexpr_long_mock(int count,...) {
   lval* e = lval_sexpr();
@@ -253,6 +273,28 @@ int test_lval_long_unary_minus() {
   lval* e = sexpr_long_mock(1, 4);
   lval* result = builtin_op(e, "-");
   test_assert(result->data.l == -4);
+
+  lval_del(result);
+  return 1;
+}
+
+int test_lval_unsupported_long() {
+  lval* e = sexpr_long_mock(2, 4, 2);
+  lval* result = builtin_op(e, "&");
+
+  test_assert(result->type == LVAL_ERR);
+  test_assert(strcmp(result->err, "Unknown operation") == 0);
+
+  lval_del(result);
+  return 1;
+}
+
+int test_lval_unsupported_long_unary() {
+  lval* e = sexpr_long_mock(1, 4);
+  lval* result = builtin_op(e, "&");
+
+  test_assert(result->type == LVAL_ERR);
+  test_assert(strcmp(result->err, "Unknown unary operation") == 0);
 
   lval_del(result);
   return 1;

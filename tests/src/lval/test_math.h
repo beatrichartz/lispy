@@ -18,6 +18,9 @@ int test_lval_double_min();
 
 int test_lval_double_unary_minus();
 
+int test_lval_unsupported_double();
+int test_lval_unsupported_double_unary();
+
 
 int test_lval_long_addition();
 int test_lval_long_subtraction();
@@ -31,5 +34,8 @@ int test_lval_long_max();
 int test_lval_long_min();
 
 int test_lval_long_unary_minus();
+
+int test_lval_unsupported_long();
+int test_lval_unsupported_long_unary();
 
 #endif
