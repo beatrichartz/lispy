@@ -17,8 +17,8 @@ lval* builtin_op_long(lval* x, char* op, lval* y) {
   if (strcmp(op, "%") == 0)   { x->data.l %= y->data.l; return x; }
   if (strcmp(op, "mod") == 0) { x->data.l %= y->data.l; return x; }
 
-  if (strcmp(op, "^") == 0)   { x->data.l ^= y->data.l; return x; }
-  if (strcmp(op, "pow") == 0) { x->data.l ^= y->data.l; return x; }
+  if (strcmp(op, "^") == 0)   { x->data.l = pow(x->data.l, y->data.l); return x; }
+  if (strcmp(op, "pow") == 0) { x->data.l = pow(x->data.l, y->data.l); return x; }
 
   int is_max = (strcmp(op, "max") == 0);
   if (is_max && x->data.l < y->data.l) { x->data.l = y->data.l; return x; }
