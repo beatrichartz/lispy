@@ -2,6 +2,7 @@
 #define LISPY_LVAL_OPERATIONS
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "define.h"
 
 lval* lval_add(lval* v, lval* x);

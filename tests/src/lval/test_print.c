@@ -13,8 +13,11 @@ int test_lval_print_sexpr() {
   FILE *captured_output = fopen("tests/tmp/captured_output", "r");
   char string[22];
   fgets(string, 22, captured_output);
+  fclose(captured_output);
 
   test_assert(strcmp(string, "(+ 2.200000 4.400000)") == 0);
+
+  lval_del(e);
 
   return 1;
 }
@@ -29,8 +32,11 @@ int test_lval_print_long() {
   FILE *captured_output = fopen("tests/tmp/captured_output", "r");
   char string[2];
   fgets(string, 2, captured_output);
+  fclose(captured_output);
 
   test_assert(strcmp(string, "2") == 0);
+
+  lval_del(e);
 
   return 1;
 }
@@ -44,8 +50,11 @@ int test_lval_print_double() {
   FILE *captured_output = fopen("tests/tmp/captured_output", "r");
   char string[9];
   fgets(string, 9, captured_output);
+  fclose(captured_output);
 
   test_assert(strcmp(string, "2.200000") == 0);
+
+  lval_del(e);
 
   return 1;
 }

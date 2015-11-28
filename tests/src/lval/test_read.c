@@ -39,6 +39,9 @@ int test_lval_read_sexpr() {
   test_assert(result->cell[3]->type == LVAL_SEXPR);
   test_assert(result->cell[3]->count == 3);
 
+  mpc_ast_delete(s);
+  lval_del(result);
+
   return 1;
 }
 
@@ -64,6 +67,9 @@ int test_lval_read_sub_sexpr() {
   test_assert(subresult->cell[2]->type == LVAL_LONG);
   test_assert(subresult->cell[2]->data.l == 4);
 
+  mpc_ast_delete(s);
+  lval_del(result);
+
   return 1;
 }
 
@@ -74,6 +80,10 @@ int test_lval_read_double() {
   test_assert(result->type == LVAL_DOUBLE);
   test_assert(result->data.d <= 2.330001);
   test_assert(result->data.d >= 2.329999);
+
+  mpc_ast_delete(s);
+  lval_del(result);
+
   return 1;
 }
 
@@ -83,5 +93,9 @@ int test_lval_read_long() {
 
   test_assert(result->type == LVAL_LONG);
   test_assert(result->data.l == 2);
+
+  mpc_ast_delete(s);
+  lval_del(result);
+
   return 1;
 }

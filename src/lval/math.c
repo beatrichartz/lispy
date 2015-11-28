@@ -92,6 +92,7 @@ lval* builtin_op(lval* a, char* op) {
         return lval_err("Can not apply unary operation to non-number");
     }
   } else if (!is_unary_minus && a->count == 0) {
+    lval_del(x); lval_del(a);
     return lval_err("Unknown unary operation");
   }
 
@@ -121,5 +122,6 @@ lval* builtin_op(lval* a, char* op) {
   }
 
   lval_del(a);
+
   return x;
 }

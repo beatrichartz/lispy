@@ -1,5 +1,4 @@
 #include "operations.h"
-#include <stdio.h>
 
 lval* lval_add(lval* v, lval* x) {
   v->count++;
@@ -10,16 +9,15 @@ lval* lval_add(lval* v, lval* x) {
 }
 
 lval* lval_pop(lval* v, int i) {
-  lval* x = malloc(sizeof(lval));
-  memcpy(x, v->cell[i], sizeof(lval));
+  lval* x = v->cell[i];
 
+  v->count--;
   memmove(
       &v->cell[i],
       &v->cell[i+1],
-      sizeof(lval*) * v->count - i - 1
+      sizeof(lval*) * v->count - i
   );
 
-  v->count--;
   if (v->count == 0) {
     free(v->cell);
     v->cell = NULL;
