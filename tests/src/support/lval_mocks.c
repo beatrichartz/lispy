@@ -1,4 +1,4 @@
-#include "mocks.h"
+#include "lval_mocks.h"
 
 lval* sexpr_double_mock(int count,...) {
   lval* e = lval_sexpr();

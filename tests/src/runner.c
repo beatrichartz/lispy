@@ -60,6 +60,11 @@ int run_all_tests() {
   run_test(test_lval_print_double);
   run_test(test_lval_print_long);
 
+  run_test(test_lval_read_sexpr);
+  run_test(test_lval_read_sub_sexpr);
+  run_test(test_lval_read_double);
+  run_test(test_lval_read_long);
+
   return 0;
 }
 
