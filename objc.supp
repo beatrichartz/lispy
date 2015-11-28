@@ -192,3 +192,26 @@
    fun:NXCreateMapTableFromZone
    fun:NXCreateMapTable
 }
+{
+   balloc_dtoa_indirect
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   fun:__Balloc_D2A
+}
+{
+   balloc_dtoa_def
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:__Balloc_D2A
+}
+{
+   printf_makebuf
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:__smakebuf
+   fun:__swsetup
+   fun:__v2printf
+}
