@@ -35,10 +35,9 @@ int test_lval_take() {
   lval* b = lval_sexpr();
 
   lval_add(a, b);
-  lval_take(a, 0);
+  lval *y = lval_take(a, 0);
 
-  test_assert(a->count == 0);
-  test_assert(a->cell == NULL);
+  test_assert(y == b);
 
   lval_del(b);
 
