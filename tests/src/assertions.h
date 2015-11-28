@@ -6,12 +6,12 @@
 #include "colors.h"
 
 #define PASS_ASSERTION(assertion) do {                                  \
-  printf("%s%-30s%-40spassed%s\n",                                      \
+  printf("%s%-35s%-55spassed%s\n",                                      \
          KGRN, __func__, assertion, RESET);                             \
 } while(0)
 
 #define FAIL_ASSERTION(assertion) do {                                  \
-  printf("%s%-30s%-40sfailed%s\n",                                      \
+  printf("%s%-35s%-55sfailed%s\n",                                      \
          KRED, __func__, assertion, RESET);                             \
 } while(0)
 
