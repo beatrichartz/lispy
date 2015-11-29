@@ -1,5 +1,5 @@
-#ifndef LISPY_TEST_ASSERTIONS
-#define LISPY_TEST_ASSERTIONS
+#ifndef RUNNER_ASSERTIONS
+#define RUNNER_ASSERTIONS
 
 #include <stdio.h>
 #include <strings.h>

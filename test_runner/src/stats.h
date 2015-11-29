@@ -1,5 +1,5 @@
-#ifndef LISPY_TEST_STATS
-#define LISPY_TEST_STATS
+#ifndef RUNNER_STATS
+#define RUNNER_STATS
 
 #include <stdlib.h>
 #include <stdio.h>

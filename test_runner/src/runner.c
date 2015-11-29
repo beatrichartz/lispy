@@ -105,7 +105,10 @@ void run_test(runner *r, test *t) {
 }
 
 int main(int arc, char** argv) {
-  suite* s = add_all_tests();
+  suite* s = new_suite(20);
+
+  add_tests(s);
+
   runner* r = new_runner();
   stats *st = new_stats();
 

@@ -1,5 +1,5 @@
-#ifndef LISPY_TEST_SUITE
-#define LISPY_TEST_SUITE
+#ifndef RUNNER_SUITE
+#define RUNNER_SUITE
 
 #include <stdio.h>
 #include "test.h"
@@ -16,7 +16,7 @@ void destroy_suite(suite *s);
 void destroy_test(test *t);
 void destroy_string_field(char *s);
 void randomize_suite(suite *s, int seed);
-suite* add_all_tests();
+void add_tests(suite *s);
 
 #define add_test(s, f) do {  \
   execute_add_test_to_suite( \

@@ -1,5 +1,5 @@
-#ifndef LISPY_TEST_RUNNER
-#define LISPY_TEST_RUNNER
+#ifndef RUNNER
+#define RUNNER
 
 #include <stdio.h>
 #include <sys/time.h>

@@ -1,0 +1,8 @@
+TEST_RUNNER_SRC_DIR = test_runner/src
+TEST_RUNNER_OBJ_DIR = test_runner/obj
+TEST_RUNNER_SOURCES = $(wildcard $(TEST_RUNNER_SRC_DIR)/*.c) $(wildcard $(TEST_RUNNER_SRC_DIR)/*/*.c)
+TEST_RUNNER_OBJECTS = $(TEST_RUNNER_SOURCES:$(TEST_RUNNER_SRC_DIR)/%.c=$(TEST_RUNNER_OBJ_DIR)/%.o)
+
+$(TEST_RUNNER_OBJECTS): $(TEST_RUNNER_OBJ_DIR)/%.o : $(TEST_RUNNER_SRC_DIR)/%.c
+	$(CC) $(CFLAGS) $(TEST_CFLAGS) -c $< -o $@
+	@echo "Compiled "$<

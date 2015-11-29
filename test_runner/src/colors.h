@@ -1,5 +1,5 @@
-#ifndef LISPY_TEST_COLORS
-#define LISPY_TEST_COLORS
+#ifndef RUNNER_COLORS
+#define RUNNER_COLORS
 
 #define KRED  "\x1B[31m"
 #define KYLW  "\x1B[33m"
