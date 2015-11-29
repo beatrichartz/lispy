@@ -30,6 +30,10 @@ void print_lval(lval* v) {
       print_lval_expr(v, '(', ')');
       break;
 
+    case LVAL_QEXPR:
+      print_lval_expr(v, '{', '}');
+      break;
+
     case LVAL_ERR:
       printf("Error: %s", v->err);
       break;

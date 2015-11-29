@@ -54,6 +54,7 @@ void add_tests(suite *s) {
 
 
   add_test(s, test_lval_print_sexpr);
+  add_test(s, test_lval_print_qexpr);
   add_test(s, test_lval_print_double);
   add_test(s, test_lval_print_long);
 
