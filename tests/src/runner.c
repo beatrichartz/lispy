@@ -1,5 +1,6 @@
 #include "runner.h"
 #include "test_lval.h"
+#include "test_parser.h"
 
 int tests_run = 0;
 int tests_passed = 0;
@@ -64,6 +65,13 @@ int run_all_tests() {
   run_test(test_lval_read_sub_sexpr);
   run_test(test_lval_read_double);
   run_test(test_lval_read_long);
+
+  run_test(test_grammar_for_long);
+  run_test(test_grammar_for_double);
+  run_test(test_grammar_for_symbol);
+  run_test(test_grammar_for_sexpr);
+  run_test(test_grammar_for_expr);
+  run_test(test_grammar_for_lispy);
 
   return 0;
 }

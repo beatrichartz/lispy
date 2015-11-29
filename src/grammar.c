@@ -13,9 +13,9 @@ void define_lispy_grammar() {
       long     : /-?[0-9]+/ ;                            \
       double   : /-?[0-9]+\\.[0-9]+/ ;                   \
       symbol   : '+' | '-' | '*' | '/' | '%' | '^'       \
-      | \"add\" | \"sub\" | \"mul\"             \
-      | \"div\" | \"mod\" | \"pow\"             \
-      | \"max\" | \"min\" ;                     \
+               | \"add\" | \"sub\" | \"mul\"             \
+               | \"div\" | \"mod\" | \"pow\"             \
+               | \"max\" | \"min\" ;                     \
       sexpr    : '(' <expr>* ')' ;                       \
       expr     : <double> | <long> | <symbol> | <sexpr> ;\
       lispy    : /^/ <expr>* /$/ ;                       \
