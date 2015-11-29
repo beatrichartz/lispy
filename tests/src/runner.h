@@ -2,42 +2,29 @@
 #define LISPY_TEST_RUNNER
 
 #include <stdio.h>
+#include <sys/time.h>
 #include "colors.h"
 #include "assertions.h"
+#include "test.h"
+#include "suite.h"
+#include "stats.h"
 #include "lispy.h"
 
-#define PRINT_RUN_START()                                              \
-  printf("\n%s**************************************** RUNNING TESTS *****************************************%s\n\n", KCYN, RESET);
+typedef struct {
+  int run;
+  int pending;
+  int passed;
+  int failed;
+  int seed;
+} runner;
 
-#define PRINT_RUN_RESULT() do {                                        \
-  char* color = (tests_failed == 0) ? KGRN : KRED;                     \
-  char* message = "%s***************************** %3.1d TEST RUN, %3.1d PASSED, %3.1d FAILED *****************************%s\n"; \
-  printf(message, color, tests_run, tests_passed, tests_failed, RESET);\
-} while(0)
-
-#define PASS(test) do {                                                \
-  tests_passed++;                                                      \
-  printf("\n");                                                        \
-} while(0)
-
-#define FAIL(test) do {                                                \
-  tests_failed++;                                                      \
-  printf("\n");                                                        \
-} while(0)
-
-#define run_test(test) do {                                            \
-  int r = test();                                                      \
-  tests_run++;                                                         \
-                                                                       \
-  if (r) {                                                             \
-    PASS(test);                                                        \
-  } else {                                                             \
-    FAIL(test);                                                        \
-  }                                                                    \
-} while(0)
-
-extern int tests_run;
-extern int tests_passed;
-extern int tests_failed;
+runner* new_runner(void);
+void run_suite(runner *r, suite *s, stats *st);
+void run_test(runner *r, test *t);
+void print_run_start(runner *r, suite *s);
+void print_run_result(runner *r, suite *s);
+void print_run_failures(runner *r, suite *s);
+void print_run_info(runner *r, suite *s, stats *st);
+void destroy_runner(runner *r);
 
 #endif

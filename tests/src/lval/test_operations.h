@@ -4,8 +4,8 @@
 #include "lispy.h"
 #include "assertions.h"
 
-int test_lval_add();
-int test_lval_pop();
-int test_lval_take();
+void test_lval_add();
+void test_lval_pop();
+void test_lval_take();
 
 #endif

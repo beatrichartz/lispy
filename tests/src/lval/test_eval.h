@@ -4,9 +4,9 @@
 #include "lispy.h"
 #include "assertions.h"
 
-int test_lval_eval_simple();
-int test_lval_eval_nested();
-int test_lval_eval_error();
-int test_lval_eval_nested_error();
+void test_lval_eval_simple();
+void test_lval_eval_nested();
+void test_lval_eval_error();
+void test_lval_eval_nested_error();
 
 #endif

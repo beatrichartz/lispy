@@ -4,25 +4,49 @@
 #include <stdio.h>
 #include <strings.h>
 #include "colors.h"
+#include "test.h"
 
-#define PASS_ASSERTION(assertion) do {                                  \
-  printf("%s%-35s%-55spassed%s\n",                                      \
-         KGRN, __func__, assertion, RESET);                             \
+int execute_test_assertion(
+    test *t,
+    int assertion,
+    const char* assertion_string,
+    const char* file_name,
+    int line_number
+);
+
+void execute_mark_as_pending(
+    test *t,
+    const char* message,
+    const char* file_name,
+    int line_number
+);
+
+void pass_assertion(test *t, const char* assertion_string);
+void fail_assertion(test *t, const char* assertion_string);
+
+#define test_assert(assertion) do {                \
+  int _assertion_result_ = execute_test_assertion( \
+      t,                                           \
+      assertion,                                   \
+      #assertion,                                  \
+      __FILE__,                                    \
+      __LINE__                                     \
+  );                                               \
+                                                   \
+  if (!_assertion_result_) {                       \
+    return;                                        \
+  }                                                \
 } while(0)
 
-#define FAIL_ASSERTION(assertion) do {                                  \
-  printf("%s%-35s%-55sfailed%s\n",                                      \
-         KRED, __func__, assertion, RESET);                             \
-} while(0)
-
-#define test_assert(assertion) do {                                     \
-  if (assertion) {                                                      \
-    PASS_ASSERTION(#assertion);                                         \
-  } else {                                                              \
-    FAIL_ASSERTION(#assertion);                                         \
-    return assertion;                                                   \
-  }                                                                     \
-                                                                        \
+#define pending(message) do {                      \
+  execute_mark_as_pending(                         \
+      t,                                           \
+      message,                                     \
+      __FILE__,                                    \
+      __LINE__                                     \
+  );                                               \
+                                                   \
+  return;                                          \
 } while(0)
 
 #endif

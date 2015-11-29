@@ -1,6 +1,6 @@
 #include "test_operations.h"
 
-int test_lval_add() {
+void test_lval_add(test *t) {
   lval* a = lval_sexpr();
   lval* b = lval_sexpr();
 
@@ -10,11 +10,9 @@ int test_lval_add() {
   test_assert(a->cell[0] == b);
 
   lval_del(a);
-
-  return 1;
 }
 
-int test_lval_pop() {
+void test_lval_pop(test *t) {
   lval* a = lval_sexpr();
   lval* b = lval_sexpr();
 
@@ -26,11 +24,9 @@ int test_lval_pop() {
 
   lval_del(a);
   lval_del(b);
-
-  return 1;
 }
 
-int test_lval_take() {
+void test_lval_take(test *t) {
   lval* a = lval_sexpr();
   lval* b = lval_sexpr();
 
@@ -40,7 +36,5 @@ int test_lval_take() {
   test_assert(y == b);
 
   lval_del(b);
-
-  return 1;
 }
 

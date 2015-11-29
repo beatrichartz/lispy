@@ -1,6 +1,6 @@
 #include "test_eval.h"
 
-int test_lval_eval_simple() {
+void test_lval_eval_simple(test *t) {
   lval* s = lval_sexpr();
   lval_add(s, lval_sym("+"));
   lval_add(s, lval_double(2.2));
@@ -13,11 +13,9 @@ int test_lval_eval_simple() {
   test_assert(result->data.d <= 6.60000001);
 
   lval_del(result);
-
-  return 1;
 }
 
-int test_lval_eval_nested() {
+void test_lval_eval_nested(test *t) {
   lval* s = lval_sexpr();
   lval_add(s, lval_sym("/"));
   lval_add(s, lval_long(48));
@@ -35,11 +33,9 @@ int test_lval_eval_nested() {
   test_assert(result->data.l == 4);
 
   lval_del(result);
-
-  return 1;
 }
 
-int test_lval_eval_error() {
+void test_lval_eval_error(test *t) {
   lval* s = lval_sexpr();
   lval_add(s, lval_long(48));
   lval_add(s, lval_sym("/"));
@@ -51,11 +47,9 @@ int test_lval_eval_error() {
   test_assert(strcmp(result->err, "S-expression does not start with a symbol") == 0);
 
   lval_del(result);
-
-  return 1;
 }
 
-int test_lval_eval_nested_error() {
+void test_lval_eval_nested_error(test *t) {
   lval* s = lval_sexpr();
   lval_add(s, lval_sym("/"));
   lval_add(s, lval_long(48));
@@ -73,7 +67,5 @@ int test_lval_eval_nested_error() {
   test_assert(strcmp(result->err, "S-expression does not start with a symbol") == 0);
 
   lval_del(result);
-
-  return 1;
 }
 

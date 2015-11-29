@@ -4,8 +4,8 @@
 #include "lispy.h"
 #include "assertions.h"
 
-int test_lval_print_sexpr();
-int test_lval_print_long();
-int test_lval_print_double();
+void test_lval_print_sexpr();
+void test_lval_print_long();
+void test_lval_print_double();
 
 #endif

@@ -1,6 +1,6 @@
 #include "test_print.h"
 
-int test_lval_print_sexpr() {
+void test_lval_print_sexpr(test *t) {
   lval* e = lval_sexpr();
   lval_add(e, lval_sym("+"));
   lval_add(e, lval_double(2.2));
@@ -18,11 +18,9 @@ int test_lval_print_sexpr() {
   test_assert(strcmp(string, "(+ 2.200000 4.400000)") == 0);
 
   lval_del(e);
-
-  return 1;
 }
 
-int test_lval_print_long() {
+void test_lval_print_long(test *t) {
   lval* e = lval_long(2);
 
   freopen("tests/tmp/captured_output", "w", stdout);
@@ -37,10 +35,8 @@ int test_lval_print_long() {
   test_assert(strcmp(string, "2") == 0);
 
   lval_del(e);
-
-  return 1;
 }
-int test_lval_print_double() {
+void test_lval_print_double(test *t) {
   lval* e = lval_double(2.2);
 
   freopen("tests/tmp/captured_output", "w", stdout);
@@ -55,6 +51,4 @@ int test_lval_print_double() {
   test_assert(strcmp(string, "2.200000") == 0);
 
   lval_del(e);
-
-  return 1;
 }

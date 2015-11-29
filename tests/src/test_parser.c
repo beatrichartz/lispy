@@ -18,7 +18,7 @@ void teardown() {
   undefine_lispy_grammar();
 }
 
-int test_grammar_for_long() {
+void test_grammar_for_long(test *t) {
   setup();
   char* input = "1234";
 
@@ -29,9 +29,8 @@ int test_grammar_for_long() {
   test_assert(result->cell[0]->data.l == 1234);
 
   teardown();
-  return 1;
 }
-int test_grammar_for_double() {
+void test_grammar_for_double(test *t) {
   setup();
   char* input = "1234.0";
 
@@ -42,9 +41,8 @@ int test_grammar_for_double() {
   test_assert(result->cell[0]->data.d == 1234.0);
 
   teardown();
-  return 1;
 }
-int test_grammar_for_symbol() {
+void test_grammar_for_symbol(test *t) {
   char symbols[14][4] = { "+", "-", "*", "/", "%", "^",
     "add", "sub", "mul", "div", "mod", "pow",
     "min", "max"
@@ -61,11 +59,9 @@ int test_grammar_for_symbol() {
     test_assert(strcmp(result->cell[0]->sym, input) == 0);
     teardown();
   }
-
-  return 1;
 }
 
-int test_grammar_for_sexpr() {
+void test_grammar_for_sexpr(test *t) {
   setup();
   char *input = "(- 1234.0 2.0)";
 
@@ -83,10 +79,9 @@ int test_grammar_for_sexpr() {
   test_assert(subresult->cell[2]->type == LVAL_DOUBLE);
 
   teardown();
-  return 1;
 }
 
-int test_grammar_for_expr() {
+void test_grammar_for_expr(test *t) {
   setup();
   char *input = "- 1234.0 2.0";
 
@@ -100,9 +95,8 @@ int test_grammar_for_expr() {
   test_assert(result->cell[2]->type == LVAL_DOUBLE);
 
   teardown();
-  return 1;
 }
-int test_grammar_for_lispy() {
+void test_grammar_for_lispy(test *t) {
   setup();
   char *input = "sub 1234 (* 2 (/ 3 2))";
 
@@ -139,5 +133,4 @@ int test_grammar_for_lispy() {
   test_assert(subsubresult->cell[2]->data.l == 2);
 
   teardown();
-  return 1;
 }

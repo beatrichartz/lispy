@@ -21,7 +21,7 @@ mpc_ast_t* test_mpc_ast() {
   return s;
 }
 
-int test_lval_read_sexpr() {
+void test_lval_read_sexpr(test *t) {
   mpc_ast_t *s = test_mpc_ast();
 
   lval *result = lval_read(s);
@@ -41,11 +41,9 @@ int test_lval_read_sexpr() {
 
   mpc_ast_delete(s);
   lval_del(result);
-
-  return 1;
 }
 
-int test_lval_read_sub_sexpr() {
+void test_lval_read_sub_sexpr(test *t) {
   mpc_ast_t *s = test_mpc_ast();
 
   lval *result = lval_read(s);
@@ -69,11 +67,9 @@ int test_lval_read_sub_sexpr() {
 
   mpc_ast_delete(s);
   lval_del(result);
-
-  return 1;
 }
 
-int test_lval_read_double() {
+void test_lval_read_double(test *t) {
   mpc_ast_t *s = mpc_double_mock(2.33);
   lval *result = lval_read(s);
 
@@ -83,11 +79,9 @@ int test_lval_read_double() {
 
   mpc_ast_delete(s);
   lval_del(result);
-
-  return 1;
 }
 
-int test_lval_read_long() {
+void test_lval_read_long(test *t) {
   mpc_ast_t *s = mpc_long_mock(2);
   lval *result = lval_read(s);
 
@@ -96,6 +90,4 @@ int test_lval_read_long() {
 
   mpc_ast_delete(s);
   lval_del(result);
-
-  return 1;
 }

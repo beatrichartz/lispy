@@ -4,10 +4,10 @@
 #include "lispy.h"
 #include "assertions.h"
 
-int test_lval_long();
-int test_lval_double();
-int test_lval_sym();
-int test_lval_sexpr();
-int test_lval_err();
+void test_lval_long();
+void test_lval_double();
+void test_lval_sym();
+void test_lval_sexpr();
+void test_lval_err();
 
 #endif

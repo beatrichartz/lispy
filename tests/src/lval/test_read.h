@@ -5,9 +5,9 @@
 #include "assertions.h"
 #include "support.h"
 
-int test_lval_read_sexpr();
-int test_lval_read_sub_sexpr();
-int test_lval_read_double();
-int test_lval_read_long();
+void test_lval_read_sexpr();
+void test_lval_read_sub_sexpr();
+void test_lval_read_double();
+void test_lval_read_long();
 
 #endif

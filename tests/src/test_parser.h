@@ -4,11 +4,11 @@
 #include "assertions.h"
 #include "lispy.h"
 
-int test_grammar_for_long();
-int test_grammar_for_double();
-int test_grammar_for_symbol();
-int test_grammar_for_sexpr();
-int test_grammar_for_expr();
-int test_grammar_for_lispy();
+void test_grammar_for_long();
+void test_grammar_for_double();
+void test_grammar_for_symbol();
+void test_grammar_for_sexpr();
+void test_grammar_for_expr();
+void test_grammar_for_lispy();
 
 #endif
