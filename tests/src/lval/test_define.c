@@ -37,6 +37,16 @@ void test_lval_sexpr(test *t) {
   lval_del(s);
 }
 
+void test_lval_qexpr(test *t) {
+  lval* q = lval_qexpr();
+
+  test_assert(q->type == LVAL_QEXPR);
+  test_assert(q->count == 0);
+  test_assert(q->cell == NULL);
+
+  lval_del(q);
+}
+
 void test_lval_err(test *t) {
   lval* e = lval_err("ERR");
 

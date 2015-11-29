@@ -11,6 +11,7 @@ void add_tests(suite *s) {
   add_test(s, test_lval_double);
   add_test(s, test_lval_sym);
   add_test(s, test_lval_sexpr);
+  add_test(s, test_lval_qexpr);
   add_test(s, test_lval_err);
 
 
@@ -58,6 +59,8 @@ void add_tests(suite *s) {
 
   add_test(s, test_lval_read_sexpr);
   add_test(s, test_lval_read_sub_sexpr);
+  add_test(s, test_lval_read_qexpr);
+  add_test(s, test_lval_read_sub_qexpr);
   add_test(s, test_lval_read_double);
   add_test(s, test_lval_read_long);
 
@@ -65,6 +68,7 @@ void add_tests(suite *s) {
   add_test(s, test_grammar_for_double);
   add_test(s, test_grammar_for_symbol);
   add_test(s, test_grammar_for_sexpr);
+  add_test(s, test_grammar_for_qexpr);
   add_test(s, test_grammar_for_expr);
   add_test(s, test_grammar_for_lispy);
 }

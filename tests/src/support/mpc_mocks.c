@@ -1,23 +1,7 @@
 #include "mpc_mocks.h"
 
-/* typedef struct mpc_ast_t { */
-/*   char *tag; */
-/*   char *contents; */
-/*   mpc_state_t state; */
-/*   int children_num; */
-/*   struct mpc_ast_t** children; */
-/* } mpc_ast_t; */
-
-/* mpc_ast_t *mpc_ast_new(const char *tag, const char *contents); */
-/* mpc_ast_t *mpc_ast_build(int n, const char *tag, ...); */
-/* mpc_ast_t *mpc_ast_add_root(mpc_ast_t *a); */
-/* mpc_ast_t *mpc_ast_add_child(mpc_ast_t *r, mpc_ast_t *a); */
-/* mpc_ast_t *mpc_ast_add_tag(mpc_ast_t *a, const char *t); */
-/* mpc_ast_t *mpc_ast_tag(mpc_ast_t *a, const char *t); */
-/* mpc_ast_t *mpc_ast_state(mpc_ast_t *a, mpc_state_t s); */
-
-mpc_ast_t* mpc_sexpr_mock(mpc_ast_t *first, ...) {
-  mpc_ast_t *m = mpc_ast_new("sexpr", "");
+mpc_ast_t* mpc_expr_mock(char *type, mpc_ast_t *first, ...) {
+  mpc_ast_t *m = mpc_ast_new(type, "");
 
   va_list arguments;
   mpc_ast_t *x;
@@ -31,12 +15,12 @@ mpc_ast_t* mpc_sexpr_mock(mpc_ast_t *first, ...) {
   return m;
 }
 
-mpc_ast_t* mpc_content_mock(const char* content) {
+mpc_ast_t* mpc_content_mock(const char *content) {
   mpc_ast_t *m = mpc_ast_new("content", content);
   return m;
 }
 
-mpc_ast_t* mpc_sym_mock(const char* symbol) {
+mpc_ast_t* mpc_sym_mock(const char *symbol) {
   mpc_ast_t *m = mpc_ast_new("symbol", symbol);
   return m;
 }

@@ -23,6 +23,7 @@ enum {
   LVAL_DOUBLE,
   LVAL_SYM,
   LVAL_SEXPR,
+  LVAL_QEXPR,
   LVAL_ERR
 } LVALS;
 
@@ -30,6 +31,7 @@ lval* lval_long(long num);
 lval* lval_double(double num);
 lval* lval_sym(char* s);
 lval* lval_sexpr(void);
+lval* lval_qexpr(void);
 lval* lval_err(char* m);
 
 #endif

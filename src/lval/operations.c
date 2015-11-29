@@ -52,6 +52,7 @@ void lval_del(lval* v) {
       free(v->sym);
       break;
     case LVAL_SEXPR:
+    case LVAL_QEXPR:
       free_cell(v->cell, v->count);
       break;
   }

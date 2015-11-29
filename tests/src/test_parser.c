@@ -81,6 +81,27 @@ void test_grammar_for_sexpr(test *t) {
   teardown();
 }
 
+void test_grammar_for_qexpr(test *t) {
+  setup();
+  char *input = "{1 2 3 4}";
+
+  parse_lispy(input, success_cb, error_cb);
+  test_assert(result != NULL);
+  test_assert(result->type == LVAL_SEXPR);
+  test_assert(result->count == 1);
+
+  lval *subresult = result->cell[0];
+  test_assert(subresult->type == LVAL_QEXPR);
+  test_assert(subresult->count == 4);
+
+  test_assert(subresult->cell[0]->type == LVAL_LONG);
+  test_assert(subresult->cell[1]->type == LVAL_LONG);
+  test_assert(subresult->cell[2]->type == LVAL_LONG);
+  test_assert(subresult->cell[3]->type == LVAL_LONG);
+
+  teardown();
+}
+
 void test_grammar_for_expr(test *t) {
   setup();
   char *input = "- 1234.0 2.0";

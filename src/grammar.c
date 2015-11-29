@@ -5,6 +5,7 @@ void define_lispy_grammar() {
   Double   = mpc_new("double");
   Symbol   = mpc_new("symbol");
   Sexpr    = mpc_new("sexpr");
+  Qexpr    = mpc_new("qexpr");
   Expr     = mpc_new("expr");
   Lispy    = mpc_new("lispy");
 
@@ -17,12 +18,14 @@ void define_lispy_grammar() {
                | \"div\" | \"mod\" | \"pow\"             \
                | \"max\" | \"min\" ;                     \
       sexpr    : '(' <expr>* ')' ;                       \
-      expr     : <double> | <long> | <symbol> | <sexpr> ;\
+      qexpr    : '{' <expr>* '}' ;                       \
+      expr     : <double> | <long> | <symbol> | <sexpr>  \
+               | <qexpr>;                                \
       lispy    : /^/ <expr>* /$/ ;                       \
       ",
-      Long, Double, Symbol, Sexpr, Expr, Lispy);
+      Long, Double, Symbol, Sexpr, Qexpr, Expr, Lispy);
 }
 
 void undefine_lispy_grammar() {
-  mpc_cleanup(6, Long, Double, Symbol, Sexpr, Expr, Lispy);
+  mpc_cleanup(7, Long, Double, Symbol, Sexpr, Qexpr, Expr, Lispy);
 }
