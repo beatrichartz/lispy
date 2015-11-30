@@ -16,11 +16,12 @@ void destroy_runner(runner *r) {
 }
 
 void print_run_start(runner *r, suite *s) {
+  int size = s->focused_tests > 0 ? s->focused_tests : (s->size - s->crossed_tests);
   printf(
       "\n%s**************************************\
- RUNNING %4.1zu TESTS\
+ RUNNING %4.1d TESTS\
  ***************************************%s\n\n",
-      KCYN, s->size, RESET);
+      KCYN, size, RESET);
 }
 
 void print_run_result(runner *r, suite *s) {
@@ -28,7 +29,8 @@ void print_run_result(runner *r, suite *s) {
   char* message = "\n%s*********************\
  %4.1d TEST RUN, %4.1d PASSED, %4.1d PENDING, %4.1d FAILED\
  ********************%s\n";
-  printf(message, color, r->run, r->passed, r->pending, r->failed, RESET);
+  int run = s->focused_tests == 0 ? r->run : s->focused_tests;
+  printf(message, color, run, r->passed, r->pending, r->failed, RESET);
 }
 
 void print_run_pending(runner *r, suite *s) {
@@ -38,6 +40,8 @@ void print_run_pending(runner *r, suite *s) {
     test *t = s->tests[i];
     if (t->outcome == TEST_FAILED) { continue; }
     if (t->outcome == TEST_PASSED) { continue; }
+    if (s->focused_tests > 0 && !t->focused) { continue; }
+    if (s->crossed_tests > 0 && t->crossed)  { continue; }
     printf("%s%s is pending: %s%s\n" , KYLW, t->func_name, t->pending_message, RESET);
   }
   printf("\n");
@@ -50,7 +54,7 @@ void print_run_failures(runner *r, suite *s) {
     test *t = s->tests[i];
     if (t->outcome == TEST_PASSED) { continue; }
     if (t->outcome == TEST_PENDING) { continue; }
-    printf("%s%s failed assertion: %s%s\n" , KRED, t->func_name, t->failure_message, RESET);
+    printf("%sfailed assertion: %s\n%s\n%s:%d%s\n\n" , KRED, t->failure_message, t->func_name, t->file_name, t->line_number, RESET);
   }
   printf("\n");
 }
@@ -61,6 +65,14 @@ void print_run_info(runner *r, suite *s, stats *st) {
   free(ms);
 }
 
+int should_run_test(suite *s, test *t) {
+  return (
+      (
+       (s->focused_tests > 0 && t->focused) ||
+       (s->focused_tests == 0)
+      ) && !t->crossed
+   );
+}
 
 void run_suite(runner *r, suite *s, stats *st) {
   start_stat_run(st);
@@ -72,7 +84,9 @@ void run_suite(runner *r, suite *s, stats *st) {
 
   for (int i = 0; i < s->size; i++) {
     test *t = s->tests[i];
-    run_test(r, t);
+    if (should_run_test(s, t)) {
+      run_test(r, t);
+    }
   }
 
   end_stat_run(st);

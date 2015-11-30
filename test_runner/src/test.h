@@ -19,11 +19,13 @@ struct test {
   char *func_name;
   char *file_name;
   int line_number;
+  int focused;
+  int crossed;
   char *failure_message;
   char *pending_message;
 };
 
-test* new_test(testfunc func, const char* func_name);
+test* new_test(testfunc func, const char* func_name, int focused, int crossed);
 void destroy_test(test *t);
 
 #endif

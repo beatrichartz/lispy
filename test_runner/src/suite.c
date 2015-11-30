@@ -5,6 +5,8 @@ suite* new_suite(size_t initial_capacity) {
   s->size = 0;
   s->capacity = initial_capacity;
   s->tests = (test**) malloc(initial_capacity * sizeof(test*));
+  s->crossed_tests = 0;
+  s->focused_tests = 0;
   if (s->tests == NULL) {
     printf("Failed to allocate tests array\n");
     exit(1);
@@ -13,7 +15,7 @@ suite* new_suite(size_t initial_capacity) {
   return s;
 }
 
-void execute_add_test_to_suite(suite *s, testfunc func, const char* func_name) {
+void execute_add_test_to_suite(suite *s, testfunc func, const char* func_name, int focused, int crossed) {
   if (s->capacity == s->size) {
     s->capacity *= 2;
     s->tests = (test**) realloc(s->tests, s->capacity * sizeof(test*));
@@ -23,7 +25,14 @@ void execute_add_test_to_suite(suite *s, testfunc func, const char* func_name) {
     }
   }
 
-  s->tests[s->size++] = new_test(func, func_name);
+  test *t = new_test(func, func_name, focused, crossed);
+  s->tests[s->size++] = t;
+  if (focused) {
+    s->focused_tests++;
+  }
+  if (crossed) {
+    s->crossed_tests++;
+  }
 }
 
 void destroy_suite(suite *s) {

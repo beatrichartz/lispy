@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <sys/time.h>
+#include <execinfo.h>
 #include "colors.h"
 #include "assertions.h"
 #include "test.h"

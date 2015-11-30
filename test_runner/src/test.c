@@ -1,10 +1,12 @@
 #include "test.h"
 
-test* new_test(testfunc func, const char* func_name) {
+test* new_test(testfunc func, const char* func_name, int focused, int crossed) {
   test *t = malloc(sizeof(test));
   t->func = func;
   t->outcome = TEST_PENDING;
   t->func_name = strdup(func_name);
+  t->focused = focused;
+  t->crossed = crossed;
   t->file_name = NULL;
   t->line_number = 0;
   t->failure_message = NULL;
