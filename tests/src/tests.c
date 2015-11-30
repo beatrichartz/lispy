@@ -72,5 +72,15 @@ void add_tests(suite *s) {
   add_test(s, test_grammar_for_qexpr);
   add_test(s, test_grammar_for_expr);
   add_test(s, test_grammar_for_lispy);
+
+
+  fadd_test(s, test_list);
+  fadd_test(s, test_head);
+  fadd_test(s, test_head_with_too_many_args);
+  fadd_test(s, test_head_with_wrong_type);
+  fadd_test(s, test_head_with_empty_list);
+  fadd_test(s, test_tail);
+  fadd_test(s, test_join);
+  fadd_test(s, test_eval);
 }
 

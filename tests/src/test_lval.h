@@ -7,5 +7,6 @@
 #include "lval/test_math.h"
 #include "lval/test_print.h"
 #include "lval/test_read.h"
+#include "lval/test_functions.h"
 
 #endif

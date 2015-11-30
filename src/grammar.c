@@ -16,7 +16,9 @@ void define_lispy_grammar() {
       symbol   : '+' | '-' | '*' | '/' | '%' | '^'       \
                | \"add\" | \"sub\" | \"mul\"             \
                | \"div\" | \"mod\" | \"pow\"             \
-               | \"max\" | \"min\" ;                     \
+               | \"max\" | \"min\"                       \
+               | \"list\" | \"head\" | \"tail\"          \
+               | \"join\" | \"eval\" ;                   \
       sexpr    : '(' <expr>* ')' ;                       \
       qexpr    : '{' <expr>* '}' ;                       \
       expr     : <double> | <long> | <symbol> | <sexpr>  \

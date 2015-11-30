@@ -43,12 +43,13 @@ void test_grammar_for_double(test *t) {
   teardown();
 }
 void test_grammar_for_symbol(test *t) {
-  char symbols[14][4] = { "+", "-", "*", "/", "%", "^",
+  char symbols[19][5] = { "+", "-", "*", "/", "%", "^",
     "add", "sub", "mul", "div", "mod", "pow",
-    "min", "max"
+    "min", "max",
+    "list", "head", "tail", "join", "eval"
   };
 
-  for (int i = 0; i < 14; i++) {
+  for (int i = 0; i < 19; i++) {
     setup();
     char *input = symbols[i];
 
@@ -83,14 +84,17 @@ void test_grammar_for_sexpr(test *t) {
 
 void test_grammar_for_qexpr(test *t) {
   setup();
-  char *input = "{1 2 3 4}";
+  char *input = "head {1 2 3 4}";
 
   parse_lispy(input, success_cb, error_cb);
   test_assert(result != NULL);
   test_assert(result->type == LVAL_SEXPR);
-  test_assert(result->count == 1);
+  test_assert(result->count == 2);
 
-  lval *subresult = result->cell[0];
+  test_assert(result->cell[0]->type == LVAL_SYM);
+  test_assert(strcmp(result->cell[0]->sym, "head") == 0);
+
+  lval *subresult = result->cell[1];
   test_assert(subresult->type == LVAL_QEXPR);
   test_assert(subresult->count == 4);
 
