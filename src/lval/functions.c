@@ -15,9 +15,13 @@ lval* builtin_head(lval* v) {
 
   lval *q = lval_take(v, 0);
 
-  while(q->count > 1) {
-    lval_del(lval_pop(q, 1));
+
+  for(int i = 1; i < q->count; i++) {
+    lval_del(q->cell[i]);
   }
+
+  q->cell = realloc(q->cell, sizeof(lval*));
+  q->count = 1;
 
   return q;
 }
