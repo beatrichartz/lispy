@@ -24,6 +24,7 @@ void add_tests(suite *s) {
   add_test(s, test_lval_eval_list_function_join);
   add_test(s, test_lval_eval_list_function_eval);
   add_test(s, test_lval_eval_list_function_list);
+  fadd_test(s, test_lval_eval_list_function_cons);
 
   add_test(s, test_lval_double_addition);
   add_test(s, test_lval_double_subtraction);

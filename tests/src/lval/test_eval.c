@@ -179,3 +179,26 @@ void test_lval_eval_list_function_list(test *t) {
 
   lval_del(result);
 }
+
+void test_lval_eval_list_function_cons(test *t) {
+  lval* x = lval_sexpr();
+  lval_add(x, lval_sym("cons"));
+  lval_add(x, lval_long(1));
+
+  lval* a = lval_qexpr();
+
+  lval_add(x, a);
+  lval* b = lval_long(2);
+  lval* c = lval_long(3);
+
+  lval_add(a, b);
+  lval_add(a, c);
+
+  lval* result = lval_eval(x);
+
+  test_assert(result != NULL);
+  test_assert(result->type == LVAL_QEXPR);
+  test_assert(result->count == 3);
+
+  lval_del(result);
+}
