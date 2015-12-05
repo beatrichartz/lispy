@@ -353,3 +353,29 @@ void test_len(test *t) {
 
   lval_del(h);
 }
+
+void test_len_with_wrong_type(test *t) {
+  lval* x = lval_sexpr();
+  lval* a = lval_long(6);
+  lval_add(x, a);
+
+  lval *h = builtin_len(x);
+  test_assert(h->type == LVAL_ERR);
+  test_assert(strcmp(h->err, "Function 'len' passed an incorrect type") == 0);
+
+  lval_del(h);
+}
+
+void test_len_with_too_many_args(test *t) {
+  lval* x = lval_sexpr();
+  lval* a = lval_qexpr();
+  lval* b = lval_qexpr();
+  lval_add(x, a);
+  lval_add(x, b);
+
+  lval *h = builtin_len(x);
+  test_assert(h->type == LVAL_ERR);
+  test_assert(strcmp(h->err, "Function 'len' passed too many arguments") == 0);
+
+  lval_del(h);
+}

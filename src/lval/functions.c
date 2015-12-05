@@ -129,6 +129,14 @@ lval* lval_join(lval *a, lval *b) {
 }
 
 lval* builtin_len(lval* v) {
+  LISPY_ASSERT(v,
+      v->count == 1,
+      "Function 'len' passed too many arguments");
+
+  LISPY_ASSERT(v,
+      v->cell[0]->type == LVAL_QEXPR,
+      "Function 'len' passed an incorrect type");
+
   lval *q = lval_take(v, 0);
   lval *c = lval_long(q->count);
   lval_del(q);

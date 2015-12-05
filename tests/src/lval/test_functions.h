@@ -23,5 +23,7 @@ void test_eval(test *t);
 void test_eval_with_too_many_args(test *t);
 void test_eval_with_wrong_type(test *t);
 void test_len(test *t);
+void test_len_with_wrong_type(test *t);
+void test_len_with_too_many_args(test *t);
 
 #endif

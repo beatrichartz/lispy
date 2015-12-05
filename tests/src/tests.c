@@ -99,5 +99,7 @@ void add_tests(suite *s) {
   add_test(s, test_eval_with_too_many_args);
   add_test(s, test_eval_with_wrong_type);
   add_test(s, test_len);
+  add_test(s, test_len_with_wrong_type);
+  add_test(s, test_len_with_too_many_args);
 }
 
