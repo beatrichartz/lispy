@@ -19,5 +19,6 @@ lval* builtin_tail(lval* v);
 lval* builtin_list(lval* v);
 lval* builtin_eval(lval* v);
 lval* builtin_join(lval* v);
+lval* builtin_len(lval* v);
 
 #endif

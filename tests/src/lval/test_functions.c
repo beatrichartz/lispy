@@ -333,3 +333,23 @@ void test_join_with_wrong_type(test *t) {
 
   lval_del(h);
 }
+
+void test_len(test *t) {
+  lval* x = lval_sexpr();
+  lval* a = lval_qexpr();
+  lval_add(x, a);
+
+  lval* q = lval_long(4);
+  lval* r = lval_long(8);
+  lval* s = lval_long(9);
+
+  lval_add(a, q);
+  lval_add(a, r);
+  lval_add(a, s);
+
+  lval *h = builtin_len(x);
+  test_assert(h->type == LVAL_LONG);
+  test_assert(h->data.l == 3);
+
+  lval_del(h);
+}

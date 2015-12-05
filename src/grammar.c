@@ -18,7 +18,8 @@ void define_lispy_grammar() {
                | \"div\" | \"mod\" | \"pow\"             \
                | \"max\" | \"min\"                       \
                | \"list\" | \"head\" | \"tail\"          \
-               | \"join\" | \"eval\" | \"cons\" ;        \
+               | \"join\" | \"eval\" | \"cons\"          \
+               | \"len\" ;                               \
       sexpr    : '(' <expr>* ')' ;                       \
       qexpr    : '{' <expr>* '}' ;                       \
       expr     : <double> | <long> | <symbol> | <sexpr>  \

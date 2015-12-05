@@ -127,3 +127,11 @@ lval* lval_join(lval *a, lval *b) {
 
   return a;
 }
+
+lval* builtin_len(lval* v) {
+  lval *q = lval_take(v, 0);
+  lval *c = lval_long(q->count);
+  lval_del(q);
+
+  return c;
+}

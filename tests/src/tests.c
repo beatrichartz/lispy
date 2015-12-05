@@ -25,6 +25,7 @@ void add_tests(suite *s) {
   add_test(s, test_lval_eval_list_function_eval);
   add_test(s, test_lval_eval_list_function_list);
   add_test(s, test_lval_eval_list_function_cons);
+  add_test(s, test_lval_eval_list_function_len);
 
   add_test(s, test_lval_double_addition);
   add_test(s, test_lval_double_subtraction);
@@ -97,5 +98,6 @@ void add_tests(suite *s) {
   add_test(s, test_eval);
   add_test(s, test_eval_with_too_many_args);
   add_test(s, test_eval_with_wrong_type);
+  add_test(s, test_len);
 }
 

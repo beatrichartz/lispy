@@ -14,5 +14,6 @@ void test_lval_eval_list_function_join(test *t);
 void test_lval_eval_list_function_eval(test *t);
 void test_lval_eval_list_function_list(test *t);
 void test_lval_eval_list_function_cons(test *t);
+void test_lval_eval_list_function_len(test *t);
 
 #endif

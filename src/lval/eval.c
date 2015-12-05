@@ -7,6 +7,7 @@ lval* builtin(lval* v, char* func) {
   if (strcmp("eval", func) == 0) { return builtin_eval(v); }
   if (strcmp("list", func) == 0) { return builtin_list(v); }
   if (strcmp("cons", func) == 0) { return builtin_cons(v); }
+  if (strcmp("len", func) == 0)  { return builtin_len(v);  }
 
   return builtin_op(v, func);
 }
