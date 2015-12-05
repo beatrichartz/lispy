@@ -74,19 +74,19 @@ void add_tests(suite *s) {
   add_test(s, test_grammar_for_lispy);
 
 
-  fadd_test(s, test_list);
-  fadd_test(s, test_head);
-  fadd_test(s, test_head_with_too_many_args);
-  fadd_test(s, test_head_with_wrong_type);
-  fadd_test(s, test_head_with_empty_list);
-  fadd_test(s, test_tail);
-  fadd_test(s, test_tail_with_too_many_args);
-  fadd_test(s, test_tail_with_wrong_type);
-  fadd_test(s, test_tail_with_empty_list);
-  fadd_test(s, test_join);
-  fadd_test(s, test_join_with_wrong_type);
-  fadd_test(s, test_eval);
-  fadd_test(s, test_eval_with_too_many_args);
-  fadd_test(s, test_eval_with_wrong_type);
+  add_test(s, test_list);
+  add_test(s, test_head);
+  add_test(s, test_head_with_too_many_args);
+  add_test(s, test_head_with_wrong_type);
+  add_test(s, test_head_with_empty_list);
+  add_test(s, test_tail);
+  add_test(s, test_tail_with_too_many_args);
+  add_test(s, test_tail_with_wrong_type);
+  add_test(s, test_tail_with_empty_list);
+  add_test(s, test_join);
+  add_test(s, test_join_with_wrong_type);
+  add_test(s, test_eval);
+  add_test(s, test_eval_with_too_many_args);
+  add_test(s, test_eval_with_wrong_type);
 }
 

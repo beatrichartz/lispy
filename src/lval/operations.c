@@ -12,10 +12,11 @@ lval* lval_pop(lval* v, int i) {
   lval* x = v->cell[i];
 
   v->count--;
+
   memmove(
       &v->cell[i],
       &v->cell[i+1],
-      sizeof(lval*) * v->count - i
+      sizeof(lval*) * (v->count - i)
   );
 
   if (v->count == 0) {
