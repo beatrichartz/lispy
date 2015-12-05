@@ -1,10 +1,4 @@
 #include "eval.h"
-char operations[19][5] = {
-  "+", "-", "*", "/", "%", "^",
-  "add", "sub", "mul", "div", "mod", "pow",
-  "min", "max",
-  "list", "head", "tail", "join", "eval"
-};
 
 lval* builtin(lval* v, char* func) {
   if (strcmp("head", func) == 0) { return builtin_head(v); }

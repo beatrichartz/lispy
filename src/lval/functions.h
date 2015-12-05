@@ -14,6 +14,7 @@
   }                                          
 
 lval* builtin_head(lval* v);
+lval* builtin_cons(lval* v);
 lval* builtin_tail(lval* v);
 lval* builtin_list(lval* v);
 lval* builtin_eval(lval* v);

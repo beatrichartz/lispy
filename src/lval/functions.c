@@ -22,6 +22,36 @@ lval* builtin_head(lval* v) {
   return q;
 }
 
+lval* builtin_cons(lval* v) {
+  LISPY_ASSERT(v,
+      v->count > 1,
+      "Function 'cons' passed too few arguments");
+
+  LISPY_ASSERT(v,
+      v->count < 3,
+      "Function 'cons' passed too many arguments");
+
+  LISPY_ASSERT(v,
+      v->cell[1]->type == LVAL_QEXPR,
+      "Function 'cons' passed incorrect types");
+
+  lval *list = lval_pop(v, 1);
+  lval *val = lval_take(v, 0);
+
+  list->count++;
+  list->cell = realloc(list->cell, sizeof(lval*) * list->count);
+
+  memmove(
+      &list->cell[1],
+      &list->cell[0],
+      sizeof(lval*) * (list->count - 1)
+  );
+
+  list->cell[0] = val;
+
+  return list;
+}
+
 lval* builtin_tail(lval* v) {
   LISPY_ASSERT(v,
       v->count == 1,

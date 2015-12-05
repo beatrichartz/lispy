@@ -83,6 +83,10 @@ void add_tests(suite *s) {
   add_test(s, test_head_with_too_many_args);
   add_test(s, test_head_with_wrong_type);
   add_test(s, test_head_with_empty_list);
+  add_test(s, test_cons);
+  add_test(s, test_cons_with_too_few_args);
+  add_test(s, test_cons_with_too_many_args);
+  add_test(s, test_cons_with_wrong_type);
   add_test(s, test_tail);
   add_test(s, test_tail_with_too_many_args);
   add_test(s, test_tail_with_wrong_type);
