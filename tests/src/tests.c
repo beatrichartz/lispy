@@ -80,7 +80,13 @@ void add_tests(suite *s) {
   fadd_test(s, test_head_with_wrong_type);
   fadd_test(s, test_head_with_empty_list);
   fadd_test(s, test_tail);
+  fadd_test(s, test_tail_with_too_many_args);
+  fadd_test(s, test_tail_with_wrong_type);
+  fadd_test(s, test_tail_with_empty_list);
   fadd_test(s, test_join);
+  fadd_test(s, test_join_with_wrong_type);
   fadd_test(s, test_eval);
+  fadd_test(s, test_eval_with_too_many_args);
+  fadd_test(s, test_eval_with_wrong_type);
 }
 

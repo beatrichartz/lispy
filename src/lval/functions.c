@@ -1,8 +1,90 @@
 #include "functions.h"
 
 lval* builtin_head(lval* v) {
+  LISPY_ASSERT(v,
+      v->count == 1,
+      "Function 'head' passed too many arguments");
+
+  LISPY_ASSERT(v,
+      v->cell[0]->type == LVAL_QEXPR,
+      "Function 'head' passed an incorrect type");
+
+  LISPY_ASSERT(v,
+      v->cell[0]->count > 0,
+      "Function 'head' passed an empty list");
+
   lval *q = lval_take(v, 0);
 
-  while(q->count > 1) { lval_del(lval_pop(q, 1)); }
+  while(q->count > 1) {
+    lval_del(lval_pop(q, 1));
+  }
+
   return q;
+}
+
+lval* builtin_tail(lval* v) {
+  LISPY_ASSERT(v,
+      v->count == 1,
+      "Function 'tail' passed too many arguments");
+
+  LISPY_ASSERT(v,
+      v->cell[0]->type == LVAL_QEXPR,
+      "Function 'tail' passed an incorrect type");
+
+  LISPY_ASSERT(v,
+      v->cell[0]->count > 0,
+      "Function 'tail' passed an empty list");
+
+  lval *q = lval_take(v, 0);
+  lval_del(lval_pop(q, 0));
+
+  return q;
+}
+
+lval* builtin_list(lval* v) {
+  v->type = LVAL_QEXPR;
+  return v;
+}
+
+lval* builtin_eval(lval* v) {
+  LISPY_ASSERT(v,
+      v->count == 1,
+      "Function 'eval' passed too many arguments");
+
+  LISPY_ASSERT(v,
+      v->cell[0]->type == LVAL_QEXPR,
+      "Function 'eval' passed an incorrect type");
+
+  lval *q = lval_take(v, 0);
+  q->type = LVAL_SEXPR;
+
+  return lval_eval(q);
+}
+
+lval* lval_join(lval *a, lval *b);
+lval* builtin_join(lval* v) {
+  for (int i = 0; i < v->count; i++) {
+    LISPY_ASSERT(v,
+        v->cell[i]->type == LVAL_QEXPR,
+        "Function 'join' passed an incorrect type");
+  }
+
+  lval *q = lval_pop(v, 0);
+
+  while (v->count) {
+    q = lval_join(q, lval_pop(v, 0));
+  }
+
+  lval_del(v);
+  return q;
+}
+
+lval* lval_join(lval *a, lval *b) {
+  while (b->count) {
+    a = lval_add(a, lval_pop(b, 0));
+  }
+
+  lval_del(b);
+
+  return a;
 }
