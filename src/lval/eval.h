@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include "define.h"
 #include "operations.h"
+#include "functions.h"
 #include "math.h"
 
 lval* lval_eval(lval* v);

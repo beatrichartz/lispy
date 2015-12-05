@@ -1,4 +1,20 @@
 #include "eval.h"
+char operations[19][5] = {
+  "+", "-", "*", "/", "%", "^",
+  "add", "sub", "mul", "div", "mod", "pow",
+  "min", "max",
+  "list", "head", "tail", "join", "eval"
+};
+
+lval* builtin(lval* v, char* func) {
+  if (strcmp("head", func) == 0) { return builtin_head(v); }
+  if (strcmp("tail", func) == 0) { return builtin_tail(v); }
+  if (strcmp("join", func) == 0) { return builtin_join(v); }
+  if (strcmp("eval", func) == 0) { return builtin_eval(v); }
+  if (strcmp("list", func) == 0) { return builtin_list(v); }
+
+  return builtin_op(v, func);
+}
 
 lval* lval_eval_sexpr(lval* v) {
   for (int i = 0; i < v->count; i++) {
@@ -23,7 +39,7 @@ lval* lval_eval_sexpr(lval* v) {
     return lval_err("S-expression does not start with a symbol");
   }
 
-  lval* result = builtin_op(v, f->sym);
+  lval* result = builtin(v, f->sym);
   lval_del(f);
 
   return result;
@@ -34,5 +50,3 @@ lval* lval_eval(lval* v) {
 
   return v;
 }
-
-
