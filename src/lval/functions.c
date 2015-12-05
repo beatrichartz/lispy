@@ -110,10 +110,15 @@ lval* builtin_join(lval* v) {
 }
 
 lval* lval_join(lval *a, lval *b) {
-  while (b->count) {
-    a = lval_add(a, lval_pop(b, 0));
-  }
+  a->count = a->count + b->count;
+  a->cell = realloc(a->cell, sizeof(lval*) * a->count);
+  memmove(
+      &a->cell[a->count - b->count],
+      &b->cell[0],
+      sizeof(lval*) * b->count
+  );
 
+  b->count = 0;
   lval_del(b);
 
   return a;
