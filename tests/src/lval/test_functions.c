@@ -208,6 +208,71 @@ void test_tail_with_empty_list(test *t) {
   lval_del(h);
 }
 
+void test_init(test *t) {
+  lval* x = lval_sexpr();
+  lval* a = lval_qexpr();
+
+  lval_add(x, a);
+  lval* b = lval_long(1);
+  lval* c = lval_long(2);
+  lval* d = lval_long(3);
+
+  lval_add(a, b);
+  lval_add(a, c);
+  lval_add(a, d);
+
+  lval *h = builtin_init(x);
+  test_assert(h->type == LVAL_QEXPR);
+  test_assert(h->count == 2);
+  test_assert(h->cell[0]->type == LVAL_LONG);
+  test_assert(h->cell[0]->data.l == 1);
+  test_assert(h->cell[1]->type == LVAL_LONG);
+  test_assert(h->cell[1]->data.l == 2);
+
+  lval_del(h);
+}
+void test_init_with_too_many_args(test *t) {
+  lval* a = lval_qexpr();
+  lval* b = lval_long(1);
+  lval* c = lval_long(2);
+  lval* d = lval_long(3);
+
+  lval_add(a, b);
+  lval_add(a, c);
+  lval_add(a, d);
+
+  lval *h = builtin_init(a);
+  test_assert(h->type == LVAL_ERR);
+  test_assert(strcmp(h->err, "Function 'init' passed too many arguments") == 0);
+
+  lval_del(h);
+}
+void test_init_with_wrong_type(test *t) {
+  lval* a = lval_sexpr();
+  lval* b = lval_long(1);
+
+  lval_add(a, b);
+
+  lval *h = builtin_init(a);
+  test_assert(h->type == LVAL_ERR);
+  test_assert(strcmp(h->err, "Function 'init' passed an incorrect type") == 0);
+
+  lval_del(h);
+}
+
+void test_init_with_empty_list(test *t) {
+  lval* x = lval_sexpr();
+  lval* a = lval_qexpr();
+
+  lval_add(x, a);
+
+  lval *h = builtin_init(x);
+  test_assert(h->type == LVAL_ERR);
+  test_assert(strcmp(h->err, "Function 'init' passed an empty list") == 0);
+
+  lval_del(h);
+}
+
 void test_list(test *t) {
   lval* a = lval_sexpr();
   lval* b = lval_long(1);

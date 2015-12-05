@@ -43,13 +43,13 @@ void test_grammar_for_double(test *t) {
   teardown();
 }
 void test_grammar_for_symbol(test *t) {
-  char symbols[21][5] = { "+", "-", "*", "/", "%", "^",
+  char symbols[22][5] = { "+", "-", "*", "/", "%", "^",
     "add", "sub", "mul", "div", "mod", "pow",
     "min", "max",
-    "list", "head", "tail", "join", "eval", "cons", "len"
+    "list", "head", "tail", "join", "eval", "cons", "len", "init"
   };
 
-  for (int i = 0; i < 21; i++) {
+  for (int i = 0; i < 22; i++) {
     setup();
     char *input = symbols[i];
 

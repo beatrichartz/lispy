@@ -56,6 +56,25 @@ lval* builtin_cons(lval* v) {
   return list;
 }
 
+lval* builtin_init(lval* v) {
+  LISPY_ASSERT(v,
+      v->count == 1,
+      "Function 'init' passed too many arguments");
+
+  LISPY_ASSERT(v,
+      v->cell[0]->type == LVAL_QEXPR,
+      "Function 'init' passed an incorrect type");
+
+  LISPY_ASSERT(v,
+      v->cell[0]->count > 0,
+      "Function 'init' passed an empty list");
+
+  lval *q = lval_take(v, 0);
+  lval_del(lval_pop(q, q->count - 1));
+
+  return q;
+}
+
 lval* builtin_tail(lval* v) {
   LISPY_ASSERT(v,
       v->count == 1,

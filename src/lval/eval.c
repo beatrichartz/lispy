@@ -3,6 +3,7 @@
 lval* builtin(lval* v, char* func) {
   if (strcmp("head", func) == 0) { return builtin_head(v); }
   if (strcmp("tail", func) == 0) { return builtin_tail(v); }
+  if (strcmp("init", func) == 0) { return builtin_init(v); }
   if (strcmp("join", func) == 0) { return builtin_join(v); }
   if (strcmp("eval", func) == 0) { return builtin_eval(v); }
   if (strcmp("list", func) == 0) { return builtin_list(v); }

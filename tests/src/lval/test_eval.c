@@ -94,11 +94,11 @@ void test_lval_eval_operations(test *t) {
 
 
 void test_lval_eval_list_functions(test *t) {
-  char functions[2][5] = {
-    "head", "tail"
+  char functions[3][5] = {
+    "head", "tail", "init"
   };
 
-  for (int i = 0; i < 2; i++) {
+  for (int i = 0; i < 3; i++) {
     char *function = functions[i];
     lval* s = lval_sexpr();
     lval_add(s, lval_sym(function));
