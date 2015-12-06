@@ -60,9 +60,9 @@ void print_run_failures(runner *r, suite *s) {
 }
 
 void print_run_info(runner *r, suite *s, stats *st) {
-  char *ms = microseconds_string_for(st);
-  printf("\n%sRandomized with seed %6.1d - Run took %s%s\n\n" , KCYN, r->seed, ms, RESET);
-  free(ms);
+  char *time = time_string_for(st);
+  printf("\n%sRandomized with seed %6.1d - Run took %s%s\n\n" , KCYN, r->seed, time, RESET);
+  free(time);
 }
 
 int should_run_test(suite *s, test *t) {

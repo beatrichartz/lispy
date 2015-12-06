@@ -19,9 +19,15 @@ void end_stat_run(stats *s) {
   s->end = tv.tv_usec;
 }
 
-char* microseconds_string_for(stats *s) {
+char* time_string_for(stats *s) {
   char *message = malloc(sizeof(char) * 100);
-  sprintf(message, "%d ms", (s->end - s->start) / 1000);
+  if ((s->end - s->start) < 1000) {
+    sprintf(message, "%d µs", s->end - s->start);
+  } else if ((s->end - s->start) < 1000000) {
+    sprintf(message, "%d ms", (s->end - s->start) / 1000);
+  } else {
+    sprintf(message, "%d s", (s->end - s->start) / 1000000);
+  }
 
   return message;
 }
