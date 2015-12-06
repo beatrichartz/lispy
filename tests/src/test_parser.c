@@ -8,18 +8,18 @@ void success_cb(mpc_result_t *ast) {
 }
 void error_cb(mpc_result_t *result) {}
 
-void setup() {
+void setup_parser() {
   define_lispy_grammar();
   result = NULL;
 }
-void teardown() {
+void teardown_parser() {
   lval_del(result);
   result = NULL;
   undefine_lispy_grammar();
 }
 
 void test_grammar_for_long(test *t) {
-  setup();
+  setup_parser();
   char* input = "1234";
 
   parse_lispy(input, success_cb, error_cb);
@@ -28,10 +28,10 @@ void test_grammar_for_long(test *t) {
   test_assert(result->cell[0]->type == LVAL_LONG);
   test_assert(result->cell[0]->data.l == 1234);
 
-  teardown();
+  teardown_parser();
 }
 void test_grammar_for_double(test *t) {
-  setup();
+  setup_parser();
   char* input = "1234.0";
 
   parse_lispy(input, success_cb, error_cb);
@@ -40,7 +40,7 @@ void test_grammar_for_double(test *t) {
   test_assert(result->cell[0]->type == LVAL_DOUBLE);
   test_assert(result->cell[0]->data.d == 1234.0);
 
-  teardown();
+  teardown_parser();
 }
 void test_grammar_for_symbol(test *t) {
   char symbols[22][5] = { "+", "-", "*", "/", "%", "^",
@@ -50,7 +50,7 @@ void test_grammar_for_symbol(test *t) {
   };
 
   for (int i = 0; i < 22; i++) {
-    setup();
+    setup_parser();
     char *input = symbols[i];
 
     parse_lispy(input, success_cb, error_cb);
@@ -58,12 +58,12 @@ void test_grammar_for_symbol(test *t) {
     test_assert(result->type == LVAL_SEXPR);
     test_assert(result->cell[0]->type == LVAL_SYM);
     test_assert(strcmp(result->cell[0]->sym, input) == 0);
-    teardown();
+    teardown_parser();
   }
 }
 
 void test_grammar_for_sexpr(test *t) {
-  setup();
+  setup_parser();
   char *input = "(- 1234.0 2.0)";
 
   parse_lispy(input, success_cb, error_cb);
@@ -79,11 +79,11 @@ void test_grammar_for_sexpr(test *t) {
   test_assert(subresult->cell[1]->type == LVAL_DOUBLE);
   test_assert(subresult->cell[2]->type == LVAL_DOUBLE);
 
-  teardown();
+  teardown_parser();
 }
 
 void test_grammar_for_qexpr(test *t) {
-  setup();
+  setup_parser();
   char *input = "head {1 2 3 4}";
 
   parse_lispy(input, success_cb, error_cb);
@@ -103,11 +103,11 @@ void test_grammar_for_qexpr(test *t) {
   test_assert(subresult->cell[2]->type == LVAL_LONG);
   test_assert(subresult->cell[3]->type == LVAL_LONG);
 
-  teardown();
+  teardown_parser();
 }
 
 void test_grammar_for_expr(test *t) {
-  setup();
+  setup_parser();
   char *input = "- 1234.0 2.0";
 
   parse_lispy(input, success_cb, error_cb);
@@ -119,10 +119,10 @@ void test_grammar_for_expr(test *t) {
   test_assert(result->cell[1]->type == LVAL_DOUBLE);
   test_assert(result->cell[2]->type == LVAL_DOUBLE);
 
-  teardown();
+  teardown_parser();
 }
 void test_grammar_for_lispy(test *t) {
-  setup();
+  setup_parser();
   char *input = "sub 1234 (* 2 (/ 3 2))";
 
   parse_lispy(input, success_cb, error_cb);
@@ -157,5 +157,5 @@ void test_grammar_for_lispy(test *t) {
   test_assert(subsubresult->cell[2]->type == LVAL_LONG);
   test_assert(subsubresult->cell[2]->data.l == 2);
 
-  teardown();
+  teardown_parser();
 }

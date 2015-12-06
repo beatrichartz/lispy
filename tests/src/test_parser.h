@@ -2,6 +2,7 @@
 #define LISPY_TEST_PARSER
 
 #include "assertions.h"
+#include "grammar.h"
 #include "lispy.h"
 
 void test_grammar_for_long(test *t);
