@@ -1,6 +1,7 @@
 #include "suite.h"
 #include "test_lval.h"
 #include "test_parser.h"
+#include "test_city_hash.h"
 
 void add_tests(suite *s) {
   add_test(s, test_lval_add);
@@ -105,5 +106,7 @@ void add_tests(suite *s) {
   add_test(s, test_len);
   add_test(s, test_len_with_wrong_type);
   add_test(s, test_len_with_too_many_args);
+
+  add_test(s, test_city_hash_64);
 }
 
