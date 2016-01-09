@@ -1,5 +1,4 @@
-#ifndef LISPY_LVAL_MATH
-#define LISPY_LVAL_MATH
+#pragma once
 
 #include <stdlib.h>
 #include <math.h>
@@ -10,5 +9,3 @@
 lval* builtin_op_long(lval* x, char* op, lval* y);
 lval* builtin_op_double(lval* x, char* op, lval* y);
 lval* builtin_op(lval* a, char* op);
-
-#endif

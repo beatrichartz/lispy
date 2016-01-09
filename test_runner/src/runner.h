@@ -1,5 +1,4 @@
-#ifndef RUNNER
-#define RUNNER
+#pragma once
 
 #include <stdio.h>
 #include <sys/time.h>
@@ -27,5 +26,3 @@ void print_run_result(runner *r, suite *s);
 void print_run_failures(runner *r, suite *s);
 void print_run_info(runner *r, suite *s, stats *st);
 void destroy_runner(runner *r);
-
-#endif

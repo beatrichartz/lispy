@@ -1,5 +1,4 @@
-#ifndef LISPY_LVAL_PRINT
-#define LISPY_LVAL_PRINT
+#pragma once
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,5 +7,3 @@
 void print_lval_expr(lval* v, char open, char close);
 void print_lval(lval* v);
 void println_lval(lval* v);
-
-#endif

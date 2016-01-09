@@ -1,5 +1,4 @@
-#ifndef LISPY_TEST_LVAL_EVAL
-#define LISPY_TEST_LVAL_EVAL
+#pragma once
 
 #include "lispy.h"
 #include "assertions.h"
@@ -15,5 +14,3 @@ void test_lval_eval_list_function_eval(test *t);
 void test_lval_eval_list_function_list(test *t);
 void test_lval_eval_list_function_cons(test *t);
 void test_lval_eval_list_function_len(test *t);
-
-#endif

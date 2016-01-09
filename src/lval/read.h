@@ -1,5 +1,4 @@
-#ifndef LISPY_LVAL_READ
-#define LISPY_LVAL_READ
+#pragma once
 
 #include <stdlib.h>
 #include "mpc.h"
@@ -8,6 +7,3 @@
 #include "operations.h"
 
 lval* lval_read(mpc_ast_t* t);
-
-#endif
-

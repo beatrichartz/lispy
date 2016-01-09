@@ -1,5 +1,4 @@
-#ifndef LISPY_LVAL_FUNCTIONS
-#define LISPY_LVAL_FUNCTIONS
+#pragma once
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -21,5 +20,3 @@ lval* builtin_list(lval* v);
 lval* builtin_eval(lval* v);
 lval* builtin_join(lval* v);
 lval* builtin_len(lval* v);
-
-#endif

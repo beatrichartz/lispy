@@ -1,5 +1,4 @@
-#ifndef LISPY_LVAL_DEFINE
-#define LISPY_LVAL_DEFINE
+#pragma once
 
 #include <stdlib.h>
 #include <string.h>
@@ -33,5 +32,3 @@ lval* lval_sym(char* s);
 lval* lval_sexpr(void);
 lval* lval_qexpr(void);
 lval* lval_err(char* m);
-
-#endif

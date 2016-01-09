@@ -1,5 +1,4 @@
-#ifndef LISPY_LVAL_EVAL
-#define LISPY_LVAL_EVAL
+#pragma once
 
 #include <stdlib.h>
 #include "define.h"
@@ -9,5 +8,3 @@
 
 lval* lval_eval(lval* v);
 lval* lval_eval_sexpr(lval* v);
-
-#endif

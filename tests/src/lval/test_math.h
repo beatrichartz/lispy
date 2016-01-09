@@ -1,5 +1,4 @@
-#ifndef LISPY_TEST_LVAL_MATH
-#define LISPY_TEST_LVAL_MATH
+#pragma once
 
 #include <stdarg.h>
 #include "lispy.h"
@@ -38,5 +37,3 @@ void test_lval_long_unary_minus(test *t);
 
 void test_lval_unsupported_long(test *t);
 void test_lval_unsupported_long_unary(test *t);
-
-#endif

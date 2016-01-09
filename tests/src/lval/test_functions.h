@@ -1,5 +1,4 @@
-#ifndef LISPY_TEST_LVAL_FUNCTIONS
-#define LISPY_TEST_LVAL_FUNCTIONS
+#pragma once
 
 #include "lispy.h"
 #include "assertions.h"
@@ -29,5 +28,3 @@ void test_eval_with_wrong_type(test *t);
 void test_len(test *t);
 void test_len_with_wrong_type(test *t);
 void test_len_with_too_many_args(test *t);
-
-#endif

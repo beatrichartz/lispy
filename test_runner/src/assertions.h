@@ -1,5 +1,4 @@
-#ifndef RUNNER_ASSERTIONS
-#define RUNNER_ASSERTIONS
+#pragma once
 
 #include <stdio.h>
 #include <strings.h>
@@ -152,4 +151,3 @@ void fail_assertion(test *t, const char* assertion_string);
       test_assert_auto_message                       \
   )(__VA_ARGS__)
 
-#endif

@@ -1,5 +1,4 @@
-#ifndef RUNNER_TEST
-#define RUNNER_TEST
+#pragma once
 
 #include <stdlib.h>
 #include <strings.h>
@@ -27,5 +26,3 @@ struct test {
 
 test* new_test(testfunc func, const char* func_name, int focused, int crossed);
 void destroy_test(test *t);
-
-#endif

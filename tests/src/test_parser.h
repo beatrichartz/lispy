@@ -1,5 +1,4 @@
-#ifndef LISPY_TEST_PARSER
-#define LISPY_TEST_PARSER
+#pragma once
 
 #include "assertions.h"
 #include "grammar.h"
@@ -12,5 +11,3 @@ void test_grammar_for_sexpr(test *t);
 void test_grammar_for_qexpr(test *t);
 void test_grammar_for_expr(test *t);
 void test_grammar_for_lispy(test *t);
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef LISPY_GRAMMAR
-#define LISPY_GRAMMAR
+#pragma once
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,5 +14,3 @@ mpc_parser_t* Lispy;
 
 void define_lispy_grammar();
 void undefine_lispy_grammar();
-
-#endif

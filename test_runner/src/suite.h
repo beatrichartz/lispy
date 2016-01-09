@@ -1,5 +1,4 @@
-#ifndef RUNNER_SUITE
-#define RUNNER_SUITE
+#pragma once
 
 #include <stdio.h>
 #include "test.h"
@@ -49,5 +48,3 @@ void add_tests(suite *s);
       1                      \
   );                         \
 } while(0);
-
-#endif

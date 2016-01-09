@@ -1,5 +1,4 @@
-#ifndef LISPY_TEST_LVAL_READ
-#define LISPY_TEST_LVAL_READ
+#pragma once
 
 #include "lispy.h"
 #include "assertions.h"
@@ -11,5 +10,3 @@ void test_lval_read_qexpr(test *t);
 void test_lval_read_sub_qexpr(test *t);
 void test_lval_read_double(test *t);
 void test_lval_read_long(test *t);
-
-#endif

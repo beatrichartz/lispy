@@ -1,5 +1,4 @@
-#ifndef RUNNER_STATS
-#define RUNNER_STATS
+#pragma once
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -15,5 +14,3 @@ void start_stat_run(stats *s);
 void end_stat_run(stats *s);
 char* time_string_for(stats *s);
 void destroy_stats(stats *s);
-
-#endif

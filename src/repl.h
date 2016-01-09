@@ -1,5 +1,4 @@
-#ifndef LISPY_REPL
-#define LISPY_REPL
+#pragma once
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,5 +10,3 @@
 #include "mpc.h"
 
 int repl(int argc, char** argv);
-
-#endif
