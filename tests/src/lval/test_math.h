@@ -21,7 +21,6 @@ void test_lval_double_unary_minus(test *t);
 void test_lval_unsupported_double(test *t);
 void test_lval_unsupported_double_unary(test *t);
 
-
 void test_lval_long_addition(test *t);
 void test_lval_long_subtraction(test *t);
 void test_lval_long_multiplication(test *t);

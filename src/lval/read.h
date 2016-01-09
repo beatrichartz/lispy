@@ -6,4 +6,4 @@
 #include "define.h"
 #include "operations.h"
 
-lval* lval_read(mpc_ast_t* t);
+lval *lval_read(mpc_ast_t *t);

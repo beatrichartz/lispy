@@ -1,16 +1,16 @@
 #include "grammar.h"
 
 void define_lispy_grammar() {
-  Long     = mpc_new("long");
-  Double   = mpc_new("double");
-  Symbol   = mpc_new("symbol");
-  Sexpr    = mpc_new("sexpr");
-  Qexpr    = mpc_new("qexpr");
-  Expr     = mpc_new("expr");
-  Lispy    = mpc_new("lispy");
+    Long = mpc_new("long");
+    Double = mpc_new("double");
+    Symbol = mpc_new("symbol");
+    Sexpr = mpc_new("sexpr");
+    Qexpr = mpc_new("qexpr");
+    Expr = mpc_new("expr");
+    Lispy = mpc_new("lispy");
 
-  mpca_lang(MPCA_LANG_DEFAULT,
-      "                                                  \
+    mpca_lang(MPCA_LANG_DEFAULT,
+              "                                                  \
       long     : /-?[0-9]+/ ;                            \
       double   : /-?[0-9]+\\.[0-9]+/ ;                   \
       symbol   : '+' | '-' | '*' | '/' | '%' | '^'       \
@@ -26,9 +26,9 @@ void define_lispy_grammar() {
                | <qexpr>;                                \
       lispy    : /^/ <expr>* /$/ ;                       \
       ",
-      Long, Double, Symbol, Sexpr, Qexpr, Expr, Lispy);
+              Long, Double, Symbol, Sexpr, Qexpr, Expr, Lispy);
 }
 
 void undefine_lispy_grammar() {
-  mpc_cleanup(7, Long, Double, Symbol, Sexpr, Qexpr, Expr, Lispy);
+    mpc_cleanup(7, Long, Double, Symbol, Sexpr, Qexpr, Expr, Lispy);
 }

@@ -11,14 +11,14 @@
 #include "lispy.h"
 
 typedef struct {
-  int run;
-  int pending;
-  int passed;
-  int failed;
-  int seed;
+    int run;
+    int pending;
+    int passed;
+    int failed;
+    int seed;
 } runner;
 
-runner* new_runner(void);
+runner *new_runner(void);
 void run_suite(runner *r, suite *s, stats *st);
 void run_test(runner *r, test *t);
 void print_run_start(runner *r, suite *s);

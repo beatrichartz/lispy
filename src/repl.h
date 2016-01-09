@@ -9,4 +9,4 @@
 #include "lval.h"
 #include "mpc.h"
 
-int repl(int argc, char** argv);
+int repl(int argc, char **argv);

@@ -1,75 +1,71 @@
 #include "operations.h"
 
-lval* lval_add(lval* v, lval* x) {
-  v->count++;
-  v->cell = realloc(v->cell, sizeof(lval*) * v->count);
-  v->cell[v->count-1] = x;
+lval *lval_add(lval *v, lval *x) {
+    v->count++;
+    v->cell = realloc(v->cell, sizeof(lval *) * v->count);
+    v->cell[v->count - 1] = x;
 
-  return v;
+    return v;
 }
 
-lval* lval_pop(lval* v, int i) {
-  lval* x = v->cell[i];
+lval *lval_pop(lval *v, int i) {
+    lval *x = v->cell[i];
 
-  v->count--;
+    v->count--;
 
-  memmove(
-      &v->cell[i],
-      &v->cell[i+1],
-      sizeof(lval*) * (v->count - i)
-  );
+    memmove(&v->cell[i], &v->cell[i + 1], sizeof(lval *) * (v->count - i));
 
-  if (v->count == 0) {
-    free(v->cell);
-    v->cell = NULL;
-  } else {
-    v->cell = realloc(v->cell, sizeof(lval*) * v->count);
-  }
+    if (v->count == 0) {
+        free(v->cell);
+        v->cell = NULL;
+    } else {
+        v->cell = realloc(v->cell, sizeof(lval *) * v->count);
+    }
 
-  return x;
+    return x;
 }
 
-lval* lval_take(lval* v, int i) {
-  lval* x = lval_pop(v, i);
-  lval_del(v);
-  return x;
+lval *lval_take(lval *v, int i) {
+    lval *x = lval_pop(v, i);
+    lval_del(v);
+    return x;
 }
 
-void free_cell(lval** cell, int count);
-void lval_del(lval* v) {
-  if (v == NULL) {
-    return;
-  }
+void free_cell(lval **cell, int count);
+void lval_del(lval *v) {
+    if (v == NULL) {
+        return;
+    }
 
-  switch(v->type) {
+    switch (v->type) {
     case LVAL_LONG:
-      break;
+        break;
     case LVAL_DOUBLE:
-      break;
+        break;
     case LVAL_ERR:
-      free(v->err);
-      break;
+        free(v->err);
+        break;
     case LVAL_SYM:
-      free(v->sym);
-      break;
+        free(v->sym);
+        break;
     case LVAL_SEXPR:
     case LVAL_QEXPR:
-      free_cell(v->cell, v->count);
-      break;
-  }
+        free_cell(v->cell, v->count);
+        break;
+    }
 
-  free(v);
-  v = NULL;
+    free(v);
+    v = NULL;
 }
 
-void free_cell(lval** cell, int count) {
-  if (cell == NULL) {
-    return;
-  }
-  for (int i = 0; i < count; i++) {
-    lval_del(cell[i]);
-  }
+void free_cell(lval **cell, int count) {
+    if (cell == NULL) {
+        return;
+    }
+    for (int i = 0; i < count; i++) {
+        lval_del(cell[i]);
+    }
 
-  free(cell);
-  cell = NULL;
+    free(cell);
+    cell = NULL;
 }
