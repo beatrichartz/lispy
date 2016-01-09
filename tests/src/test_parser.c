@@ -6,7 +6,7 @@ void success_cb(mpc_result_t *ast) {
   /* so we store it in a variable */
   result = lval_read(ast->output);
 }
-void error_cb(mpc_result_t *result) {}
+void error_cb(mpc_result_t *error) {}
 
 void setup_parser() {
   define_lispy_grammar();
